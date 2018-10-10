@@ -9,19 +9,21 @@ public class HelloWorld {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.
+        SimpleJButton simpleJButton = new SimpleJButton();
 
-        new java.util.Timer().schedule(
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
 
-                        // Methods here are goingt to be executed after delay ends, set to 120mp
-                        System.out.println("Hey whats up?");
-                        System.out.println("test");
-                    }
-                },
-                120000
-        );
+//        new java.util.Timer().schedule(
+//                new java.util.TimerTask() {
+//                    @Override
+//                    public void run() {
+//
+//                        // Methods here are goingt to be executed after delay ends, set to 120mp
+//                        System.out.println("Hey whats up?");
+//                        System.out.println("test");
+//                    }
+//                },
+//                120000
+//        );
 
 
         //ReadMic.read();
