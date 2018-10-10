@@ -7,8 +7,8 @@ public class HelloWorld {
         System.out.println("yoforsen");
         System.out.println("KASBLB");
 
-        ReadMic.read();
-
+        //ReadMic.read();
+        fromInput();
     }
 
     public static void fromInput(){
