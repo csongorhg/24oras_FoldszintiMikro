@@ -57,7 +57,7 @@ public class CaptureMicrophone {
                             File audioFile = new File("record.wav");
                             audioFile.createNewFile();
                             AudioSystem.write(audioInputStream, AudioFileFormat.Type.WAVE, audioFile);
-                        } catch (IOException ex) {
+                    } catch (IOException ex) {
                             ex.printStackTrace();
                         }
                         System.out.println("stopped");
@@ -66,13 +66,18 @@ public class CaptureMicrophone {
             thread.start();
             thread.sleep(10000);
             targetLine.stop();
+            byte teszt[] = new byte[1000];
+            targetLine.read(teszt, 0, 1000);
+            System.out.println(new String(teszt));
+
+
             targetLine.close();
             System.out.println("end");
 
             byte[] recorded_txt = getWAVByte();
-            for(int i = 0; i < recorded_txt.length;i++) {
-                System.out.println(recorded_txt[i]);
-            }
+            /*
+                System.out.println(new String(recorded_txt));
+            }*/
 
         } catch (LineUnavailableException ex) {
             ex.printStackTrace();
