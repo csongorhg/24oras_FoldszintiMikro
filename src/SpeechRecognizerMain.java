@@ -15,6 +15,9 @@ import edu.cmu.sphinx.result.WordResult;
 
 public class SpeechRecognizerMain {
 
+    static MyByteArray myArray;
+    static String current;
+
     // Necessary
     private LiveSpeechRecognizer recognizer;
 
@@ -83,6 +86,7 @@ public class SpeechRecognizerMain {
         configuration.setUseGrammar(true);
 
         try {
+
             recognizer = new LiveSpeechRecognizer(configuration);
         } catch (IOException ex) {
             System.err.println(ex.getStackTrace());
@@ -123,6 +127,7 @@ public class SpeechRecognizerMain {
 
 
                 try {
+                    whileloop:
                     while (speechRecognizerThreadRunning) {
                         /*
                          * This method will return when the end of speech is reached. Note that the end pointer will determine the end of speech.
@@ -144,6 +149,57 @@ public class SpeechRecognizerMain {
                                 //You said?
                                 System.out.println("You said: [" + speechRecognitionResult + "]\n");
 
+                                switch(speechRecognitionResult){
+                                    case "one":
+                                        current += "1";
+                                        break;
+                                    case "two":
+                                        current += "2";
+                                        break;
+                                    case "three":
+                                        current += "3";
+                                        break;
+                                    case "four":
+                                        current += "4";
+                                        break;
+                                    case "five":
+                                        current += "5";
+                                        break;
+                                    case "six":
+                                        current += "6";
+                                        break;
+                                    case "seven":
+                                        current += "7";
+                                        break;
+                                    case "eight":
+                                        current += "8";
+                                        break;
+                                    case "nine":
+                                        current += "9";
+                                        break;
+                                    case "zero":
+                                        current += "0";
+                                        break;
+                                    case "minus":
+                                        if(current.length() > 0){
+                                            myArray.add((byte)Integer.parseInt(current));
+                                            current = "";
+                                        }
+                                        current += "-";
+                                        break;
+                                    case "next":
+                                        int value = Integer.parseInt(current);
+                                        if(value >= -128 && value < 128) {
+                                            myArray.add((byte)value);
+                                        }else{
+                                            myArray.add((byte)0);
+                                        }
+                                        current = "";
+                                        break;
+                                    case "end":
+                                        break whileloop;
+                                }
+
                                 //Call the appropriate method
                                 makeDecision(speechRecognitionResult, speechResult.getWords());
 
@@ -152,6 +208,7 @@ public class SpeechRecognizerMain {
                             System.out.println("Ingoring Speech Recognition Results...");
 
                     }
+                    myArray.generateFile();
                 } catch (Exception ex) {
                     System.err.println(ex.getMessage());
                     speechRecognizerThreadRunning = false;
@@ -242,6 +299,8 @@ public class SpeechRecognizerMain {
      * @param args
      */
     public static void main(String[] args) {
+        myArray = new MyByteArray();
+        current = "";
         new SpeechRecognizerMain();
     }
 }
