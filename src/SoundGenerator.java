@@ -6,13 +6,13 @@ import javax.sound.sampled.SourceDataLine;
 public class SoundGenerator {
 
 	public static void main(String[] args) {
-		
-		generateSound(1000, 440, 150); //length in millis, frequency (magassag), volume
 
+		generateSound(1000, 440, 150); //length in millis, frequency (magassag), volume
+		System.out.println("teszt");
 	}
 	
 	public static void generateSound(int length, int frequency, int volume){
-		byte[] buf = new byte[ 1 ];;
+		byte[] buf = new byte[ 1 ];
 	    AudioFormat af = new AudioFormat( (float )44100, 8, 1, true, false );
 	    SourceDataLine sdl;
 		try {
