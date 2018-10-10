@@ -20,11 +20,11 @@ public class CaptureMicrophone {
             System.out.println("start recording");
             targetLine.start();
 
-            try {
-                Thread thread = new Thread() {
-                    @Override
-                    public void run() {
-                        try {
+
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
                             AudioInputStream audioInputStream = new AudioInputStream(targetLine);
                             File audioFile = new File("record.wav");
                             audioFile.createNewFile();
@@ -35,10 +35,8 @@ public class CaptureMicrophone {
                         System.out.println("stopped");
                     }
                 };
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            Thread.sleep(5000);
+            thread.start();
+            thread.sleep(5000);
             targetLine.stop();
             targetLine.close();
             System.out.println("end");

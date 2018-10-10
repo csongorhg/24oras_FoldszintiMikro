@@ -1,5 +1,8 @@
-import java.io.*;
-import javax.sound.sampled.*;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.TargetDataLine;
+import java.io.ByteArrayOutputStream;
 
 public class ReadSound {
 
@@ -12,7 +15,6 @@ public class ReadSound {
         byte tempBuffer[] = new byte[8000];
         int countzero, countdownTimer;
         short convert[] = new short[tempBuffer.length];
-
 
 
         try {
