@@ -1,3 +1,7 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 public class HelloWorld {
 
     public static void main(String[] args) {
@@ -8,7 +12,42 @@ public class HelloWorld {
         System.out.println("KASBLB");
 
         //ReadMic.read();
-        fromInput();
+        //fromInput();
+
+        /*try {
+            byte[] bFile = Files.readAllBytes(Paths.get("otpt"));
+            for(int i = 0; i < bFile.length; i++){
+                System.out.println(bFile[i]);
+            }
+            System.out.println(bFile.length*8/120);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        /*int time = 50;
+        Sound sound0 = new Sound(time, 880, 150);
+        Sound sound1 = new Sound(time, 1240, 150);
+        sound1.play();
+        sleep(time);
+        sound0.play();
+        sleep(time);
+        sound1.play();
+        sleep(time);
+        sound1.play();
+        sleep(time);
+        sound0.play();
+        sleep(time);
+        sound0.play();
+        sleep(time);
+        sound0.play();
+        sleep(time);
+        sound1.play();
+        sleep(time);*/
+
+        Sound sound = new Sound(7000, 880, 100);
+        sound.play();
+
+
     }
 
     public static void fromInput(){
@@ -16,6 +55,14 @@ public class HelloWorld {
         for(int i = 0; i < sounds.length; i++){
             sounds[i].play();
             System.out.println(i);
+        }
+    }
+
+    public static void sleep(int millis){
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
