@@ -1,9 +1,37 @@
 import javax.imageio.IIOException;
 import javax.sound.sampled.*;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
 public class CaptureMicrophone {
+
+
+    private byte[] recorded_txt;
+
+    public static byte[] getWAVByte(){
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        try{
+            File f = new File("record.wav");
+            AudioInputStream in = AudioSystem.getAudioInputStream(f);
+
+            int read;
+
+            byte[] buff = new byte[(int)f.length()];
+            while ((read = in.read(buff)) > 0)
+            {
+                out.write(buff, 0, read);
+            }
+            out.flush();
+            byte[] audioBytes = out.toByteArray();
+
+            return audioBytes;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public static void main(String[] args) {
         System.out.println("sound test");
@@ -36,14 +64,21 @@ public class CaptureMicrophone {
                     }
                 };
             thread.start();
-            thread.sleep(5000);
+            thread.sleep(10000);
             targetLine.stop();
             targetLine.close();
             System.out.println("end");
+
+            byte[] recorded_txt = getWAVByte();
+            for(int i = 0; i < recorded_txt.length;i++) {
+                System.out.println(recorded_txt[i]);
+            }
+
         } catch (LineUnavailableException ex) {
             ex.printStackTrace();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
+
     }
 }
