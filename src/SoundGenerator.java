@@ -7,7 +7,7 @@ public class SoundGenerator {
 
 	public static void main(String[] args) {
 		
-		generateSound(1000, 440, 150); //length in millis, frequency (magasság), volume
+		generateSound(1000, 440, 150); //length in millis, frequency (magassag), volume
 
 	}
 	
