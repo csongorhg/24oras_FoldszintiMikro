@@ -9,10 +9,19 @@ public class HelloWorld {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
-        System.out.println("asd");
-        System.out.println("yoforsen");
-        System.out.println("KASBLB");
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+
+                        // Methods here are goingt to be executed after delay ends, set to 120mp
+                        System.out.println("Hey whats up?");
+                    }
+                },
+                120000
+        );
+
 
         //ReadMic.read();
         //fromInput();
@@ -20,7 +29,7 @@ public class HelloWorld {
         byte[] bFile = null;
         try {
             bFile = Files.readAllBytes(Paths.get("otpt"));
-            for(int i = 0; i < bFile.length; i++){
+            for (int i = 0; i < bFile.length; i++) {
                 System.out.println(bFile[i]);
             }
             System.out.println(bFile.length);
@@ -40,16 +49,13 @@ public class HelloWorld {
     }
 
 
-
-    public static void sleep(int millis){
+    public static void sleep(int millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
-
 
 
 }
