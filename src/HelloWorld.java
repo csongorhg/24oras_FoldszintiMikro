@@ -7,12 +7,16 @@ public class HelloWorld {
         System.out.println("yoforsen");
         System.out.println("KASBLB");
 
+        ReadMic.read();
+
+    }
+
+    public static void fromInput(){
         Sound sounds[] = ReadInput.read("input.txt");
         for(int i = 0; i < sounds.length; i++){
             sounds[i].play();
             System.out.println(i);
         }
-
     }
 
     public static void boci(){
