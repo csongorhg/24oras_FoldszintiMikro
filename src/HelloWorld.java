@@ -17,6 +17,7 @@ public class HelloWorld {
 
                         // Methods here are goingt to be executed after delay ends, set to 120mp
                         System.out.println("Hey whats up?");
+                        System.out.println("test");
                     }
                 },
                 120000
