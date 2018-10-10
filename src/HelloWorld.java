@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,15 +17,25 @@ public class HelloWorld {
         //ReadMic.read();
         //fromInput();
 
-        /*try {
-            byte[] bFile = Files.readAllBytes(Paths.get("otpt"));
+        byte[] bFile = null;
+        try {
+            bFile = Files.readAllBytes(Paths.get("otpt"));
             for(int i = 0; i < bFile.length; i++){
                 System.out.println(bFile[i]);
             }
-            System.out.println(bFile.length*8/120);
+            System.out.println(bFile.length);
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
+
+        try (FileOutputStream fos = new FileOutputStream("otpt_out")) {
+            fos.write(bFile);
+            fos.close();// There is no more need for this line since you had created the instance of "fos" inside the try. And this will automatically close the OutputStream
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         /*int time = 50;
         Sound sound0 = new Sound(time, 880, 150);
@@ -45,7 +58,7 @@ public class HelloWorld {
         sleep(time);*/
 
         Sound sound = new Sound(7000, 880, 100);
-        sound.play();
+        //sound.play();
 
 
     }
