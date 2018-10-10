@@ -2,4 +2,4 @@
 
 grammar grammar;
 
-public <numbers> = (one | two | three | four | five | six | seven | eight | nine | zero | minus | continue);
+public <numbers> = (one | two | three | four | five | six | seven | eight | nine | zero | minus | next);
