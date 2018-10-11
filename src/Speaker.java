@@ -116,10 +116,10 @@ public class Speaker {
                             Runtime.getRuntime().exec("wscript tts_F.vbs");
                             break;
                     }
-                    sleep(1600);
+                    sleep(1550);
                 }
                 Runtime.getRuntime().exec("wscript tts_Next.vbs");
-                sleep(1600);
+                sleep(1550);
             }
         } catch (IOException e) {
             e.printStackTrace();
